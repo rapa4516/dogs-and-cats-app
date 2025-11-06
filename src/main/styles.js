@@ -19,6 +19,14 @@ export const ContInterfaceMid = styled.View`
   justify-content: space-between;
   align-items: center;
 `
-export const ContainerRodape = styled.View`
-  
+export const ContainerRDP = styled.View`
+  width: 100%;
+  padding: 12px 20px;
+
+  background-color: #696969;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+
+  flex-direction: row;
+  justify-content: flex-end
 `
