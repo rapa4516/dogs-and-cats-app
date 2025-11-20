@@ -1,94 +1,98 @@
 import { useSQLiteContext } from "expo-sqlite";
 
-export function useAnimalDatabase(){
-    const database = useSQLiteContext();
+export function useAnimalDatabase() {
+  const database = useSQLiteContext();
 
-    async function show(){
-        try {
-            const query = "SELEC * FROM animais ORDER BY create_date desc";
-            
-            repsonse = await database.getAllAsync(query);
-
-            return response;
-        } catch (error){
-            console.log(error);
-        }
+  // LISTAR
+  async function show() {
+    try {
+      const query = "SELECT * FROM animais ORDER BY create_date DESC";
+      const response = await database.getAllAsync(query);
+      return response;
+    } catch (error) {
+      console.log("Erro SHOW:", error);
     }
+  }
 
-    async function remove(id) {
-        try{
-            const query = `DELETE FROM animais WHERE id =${id}`
-            await database.execAsync(query);
-        }catch (error){
-            console.log(error);
-        }
+  // CRIAR
+  async function create(animal) {
+    let statement;
+
+    try {
+      const query = `
+        INSERT INTO animais
+        (nome, especie, raca, sexo, idade, porte, cor, foto)
+        VALUES ($nome, $especie, $raca, $sexo, $idade, $porte, $cor, $foto)
+      `;
+
+      statement = await database.prepareAsync(query);
+
+      await statement.executeAsync({
+        $nome: animal.nome,
+        $especie: animal.especie,
+        $raca: animal.raca,
+        $sexo: animal.sexo,
+        $idade: animal.idade,
+        $porte: animal.porte,
+        $cor: animal.cor,
+        $foto: animal.foto
+      });
+
+    } catch (error) {
+      console.log("Erro CREATE:", error);
+    } finally {
+      if (statement) await statement.finalizeAsync();
     }
+  }
 
-    async function create(animal){
-        try{
-            const query = `INSERT INTO animais (nome, especie,
-            raca,sexo,idade,porte,cor,foto)`;
+  // ATUALIZAR
+  async function update(animal) {
+    let statement;
 
-            statement.executeAsync({
-                $nome: animal.nome,
-                $especie: animal.especie,
-                $raca: animal.raca,
-                $sexo: animal.sexo,
-                $idade: animal.idade,
-                $porte: animal.porte,
-                $cor: animal.cor,
-                $foto: animal.foto
-            });
+    try {
+      const query = `
+        UPDATE animais SET 
+          nome = $nome,
+          especie = $especie,
+          raca = $raca,
+          sexo = $sexo,
+          idade = $idade,
+          porte = $porte,
+          cor = $cor,
+          foto = $foto
+        WHERE id = $id
+      `;
 
-        }catch (error){
-            console.log(error);
-        }finally{
-            await statement.finalizeAsync();
-        }
+      statement = await database.prepareAsync(query);
+
+      await statement.executeAsync({
+        $id: animal.id,
+        $nome: animal.nome,
+        $especie: animal.especie,
+        $raca: animal.raca,
+        $sexo: animal.sexo,
+        $idade: animal.idade,
+        $porte: animal.porte,
+        $cor: animal.cor,
+        $foto: animal.foto
+      });
+
+    } catch (error) {
+      console.log("Erro UPDATE:", error);
+    } finally {
+      if (statement) await statement.finalizeAsync();
     }
+  }
 
-    async function update(){
-        const query = 
-        `UPDATE animais SET 
-        nome = $nome,
-        especie = $especie,
-        raca = $raca,
-        sexo = $sexo,
-        idade = $idade,
-        porte = $porte,
-        cor = $cor,
-        foto = $foto
-        WHERE id = $id`;
-
-        try{
-            const statement = await database.prepareAsync(query);
-
-            statement.executeAsync({
-                $nome: animal.nome,
-                $especie: animal.especie,
-                $raca: animal.raca,
-                $sexo: animal.sexo,
-                $idade: animal.idade,
-                $porte: animal.porte,
-                $cor: animal.cor,
-                $foto: animal.foto
-            });
-        }catch (error){
-            console.log(error);
-        }finally{
-            await statement.finalizeAsync();
-        }
-
-        async function remove(id) {
-            try {
-              const query = `DELETE FROM animais WHERE id = ${id}`;
-        
-              await database.execAsync(query);
-            } catch (error) {
-              console.log(error);
-            }
-          }
-
-        return { show, create, update, remove}
+  // REMOVER
+  async function remove(id) {
+    try {
+      const query = `DELETE FROM animais WHERE id = ${id}`;
+      await database.execAsync(query);
+    } catch (error) {
+      console.log("Erro REMOVE:", error);
     }
+  }
+
+  return { show, create, update, remove };
 }

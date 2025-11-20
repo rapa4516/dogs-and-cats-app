@@ -16,6 +16,8 @@ import AddNotaButton from "../components/AddNotaButton";
 import SobreInstButton from "../components/SobreInstButton";
 import AnimaisAdotButton from "../components/AnimaisAdotButton";
 
+import { useAnimalDatabase } from '../database/useAnimalDatabase'
+
 import { useState } from "react";
 
 export default function Main(){
@@ -25,25 +27,32 @@ const [isAddNotaModalVisible, setAddNotaModalVisible] = useState(false);
 const [isSobreInstModalVisible, setSobreIntsModalVisible] = useState(false);
 const [isAnimaisAdotModalVisible, setAnimaisAdotModalVisible] = useState(false);
 
-function handleAddAnimal (){
+const animalDatabase  = useAnimalDatabase();
+
+function handleAddAnimalBtn (){
     setAddAnimalModalVisible(true); 
 }
-
-function handleListAnimal (){
+function handleListAnimalBtn (){
     setListModalVisible(true);
 }
-
-function handleAddNota () {
+function handleAddNotaBtn () {
     setAddNotaModalVisible(true);
 }
-
-function handleSobreInst () {
+function handleSobreInstBtn () {
     setSobreIntsModalVisible(true);
 }
-
-function handleAnimaisAdot () {
+function handleAnimaisAdotBtn () {
     setAnimaisAdotModalVisible(true);
 }
+
+//funcoes
+
+function handleCriarAnimal (animal) {
+    animalDatabase.create(animal)
+    setAddAnimalModalVisible(false);
+}
+
+
 
 return(
         <Container>
@@ -52,18 +61,19 @@ return(
             <ContInterfaceTop> 
                     
                     {/* BOTAO DE ADICIONAR ANIMAL */}
-                    <TouchableOpacity onPress={handleAddAnimal}>
+                    <TouchableOpacity onPress={handleAddAnimalBtn}>
                             <Image source={addAnimal} style={{ width: 110, 
                                 height: 110, marginTop: 3, 
                                 marginBottom: 15,resizeMode: 'contain'}}/>
-                            <AddAnimalButtom 
+                    </TouchableOpacity>
+                    <AddAnimalButtom 
                                 visible={isAddAnimalModalVisible} 
                                 onClose={()=> setAddAnimalModalVisible(false)}
+                                onSave={handleCriarAnimal}
                             />
-                    </TouchableOpacity>
 
                     {/* BOTAO DE LISTAR ANIMAL */}
-                    <TouchableOpacity onPress={handleListAnimal}>
+                    <TouchableOpacity onPress={handleListAnimalBtn}>
                             <Image source={listAnimal} style={{ width: 110, 
                                 height: 110,marginTop: 3, 
                                 marginBottom: 15,resizeMode: 'contain'}}/>
@@ -77,7 +87,7 @@ return(
             <ContInterfaceMid>
 
                     {/* BOTAO DE ADICIONAR NOTA */}
-                    <TouchableOpacity onPress={handleAddNota}>
+                    <TouchableOpacity onPress={handleAddNotaBtn}>
                             <Image source={addNota} style={{ width: 110, 
                                 height: 110,  marginTop: 3, 
                                 marginBottom: 0,resizeMode: 'contain'}}/>
@@ -88,7 +98,7 @@ return(
                     </TouchableOpacity>
                     
                     {/* BOTAO DE SOBRE A INSTITUICAO */}
-                    <TouchableOpacity onPress={handleSobreInst}>
+                    <TouchableOpacity onPress={handleSobreInstBtn}>
                             <Image source={sobreInst} style={{ width: 200, 
                                 height: 200, marginTop: 0, 
                                 marginBottom: 15,resizeMode: 'contain'}}/>
@@ -99,7 +109,7 @@ return(
                     </TouchableOpacity>
                     
                     {/* BOTAO DE LISTAR ANIMAIS ADOTADOS */}
-                    <TouchableOpacity onPress={handleAnimaisAdot}>
+                    <TouchableOpacity onPress={handleAnimaisAdotBtn}>
                             <Image source={listAnimalAdot} style={{ width: 110, 
                                 height: 110,  marginTop: 3, 
                                 marginBottom: 0,resizeMode: 'contain'}}/>

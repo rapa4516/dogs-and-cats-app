@@ -12,7 +12,7 @@ export default function AnimalForm({ buttonLabel, onSave, animal }) {
     const [sexo, setSexo] = useState(animal?.sexo ?? '');
     const [idade, setIdade] = useState(animal?.idade ?? '');
     const [porte, setPorte] = useState(animal?.porte ?? '');
-    const [cor, setCor] = useState(animal?.cor)
+    const [cor, setCor] = useState(animal?.cor ?? '');
     const [foto, setFoto] = useState(animal?.foto ?? '');
 
 
@@ -70,10 +70,11 @@ export default function AnimalForm({ buttonLabel, onSave, animal }) {
 
       <Button
         onPress={() => onSave({ id, nome, especie, sexo, raca, idade, porte, cor, foto })}
-        disabled={nome.length === 0 || especie.length === 0 || sexo.lenght === 0}
+        disabled={nome.length === 0 || especie.length === 0 || sexo.length === 0}
       >
        Cadastrar{buttonLabel}
       </Button>
+
     </Form>
   );
 }

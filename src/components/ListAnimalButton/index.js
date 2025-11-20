@@ -1,7 +1,7 @@
 import { Image, TouchableOpacity } from "react-native";
 import CustomModal from "../CustomModal";
 import { Text } from "../Text";
-import { Header } from "./styles";
+import { Header, Container } from "./styles";
 
 import close from '../../assets/images/close.png';
 
