@@ -123,6 +123,7 @@ return(
                     {/* RODAPÉ */}
                             <Text>Estácio | Developed by </Text>
             </ContainerRDP>
+
         </Container>
 );
 

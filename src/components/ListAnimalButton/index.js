@@ -1,21 +1,35 @@
-import { Image, TouchableOpacity } from "react-native";
+import { Image, TouchableOpacity, ScrollView } from "react-native";
+
+
 import CustomModal from "../CustomModal";
 import { Text } from "../Text";
 import { Header, Container } from "./styles";
 
 import close from '../../assets/images/close.png';
 
-export default function ListAnimalButton ({visible, onClose, onListAnimal}){
+import ListarAnimais from "../AnimalList/index"
+
+export default function ListAnimalButton ({visible, onClose}){
+    
     return(
-        <CustomModal visible={visible} onClose={onListAnimal}>
+        <CustomModal visible={visible}>
         <Header>
             <Text>Listar Animais</Text>
 
-            <TouchableOpacity onPress={onClose}>
+            <TouchableOpacity onPress={onClose} style={{ position: 'absolute', right: 0 }}>
                 <Image source={close} />
             </TouchableOpacity>
             
         </Header>
+        <Container>
+
+
+
+                <ListarAnimais visible={visible}/>
+
+ 
+          
+        </Container>
         </CustomModal>
     );
 }

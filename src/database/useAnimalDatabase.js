@@ -6,7 +6,7 @@ export function useAnimalDatabase() {
   // LISTAR
   async function show() {
     try {
-      const query = "SELECT * FROM animais ORDER BY create_date DESC";
+      const query = "SELECT * FROM animais ORDER BY id DESC";
       const response = await database.getAllAsync(query);
       return response;
     } catch (error) {

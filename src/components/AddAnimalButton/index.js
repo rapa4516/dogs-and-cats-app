@@ -19,9 +19,10 @@ export default function AddAnimalButtom ({visible, onClose, onSave}){
                 </TouchableOpacity>
             </Header>
 
-            <AnimalForm
-                onSave={onSave}
-            />
+                <AnimalForm
+                    onSave={onSave}
+                />
+            
             
         </CustomModal>
     );
