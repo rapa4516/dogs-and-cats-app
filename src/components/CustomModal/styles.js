@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 
 export const Overlay = styled.View`
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.2);
   flex: 1;
   justify-content: center;
   align-items: center;
@@ -10,7 +10,8 @@ export const Overlay = styled.View`
 
 export const ModalBody = styled.View`
   background-color: #fff;
-  width: 100%;
+  width: 107%;
+  max-height: 59%;
   padding: 24px;
   border-radius: 8px;
 `;

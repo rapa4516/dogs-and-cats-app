@@ -5,6 +5,7 @@ import { Platform, StatusBar } from 'react-native';
 const isAndroid = Platform.OS === 'android';
 
 export const Container = styled.SafeAreaView`
+  background-color: #A7D3FF;
   margin-top: ${isAndroid ? `${StatusBar.currentHeight}px` : 0};
   flex: 1;
 `;

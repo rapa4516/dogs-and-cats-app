@@ -35,18 +35,23 @@ export default function AnimalForm({ buttonLabel, onSave, animal }) {
   return (
     <Form>
       <ScrollView>
-        <Input placeholder="Nome" value={nome} onChangeText={setNome} maxLength={12}/>
+        <Input placeholder="Nome" placeholderColor="#000000" value={nome} onChangeText={setNome} maxLength={12}/>
         <RNPickerSelect onValueChange={setEspecie} value={especie} placeholder={{ label: 'Selecione a espécie', value: null, color: '#999',}}
           items={[
               { label: 'Cachorro', value: 'Cachorro' },
               { label: 'Gato', value: 'Gato' }
           ]}
         />
-        <RNPickerSelect onValueChange={(value) => setSexo(value)} value={sexo} placeholder={{ label: "Selecione o sexo", value: null }}items={[{ label: 'Masculino', value: 'Masculino' },{ label: 'Feminino', value: 'Feminino' },]}/>
-        <Input placeholder="Raça" value={raca} onChangeText={setRaca} maxLength={12} />
-        <Input placeholder="Idade" value={idade} onChangeText={setIdade} maxLength={2} />
-        <Input placeholder="Porte" value={porte} onChangeText={setPorte} maxLength={12} />
-        <Input placeholder="Cor" value={cor} onChangeText={setCor} maxLength={12} />
+        <RNPickerSelect onValueChange={(value) => setSexo(value)} value={sexo} placeholder={{ label: "Selecione o sexo", value: null }}
+        items={[
+          { label: 'Masculino', value: 'Masculino' },
+          { label: 'Feminino', value: 'Feminino' },
+          ]}
+        />
+        <Input placeholder="Raça" placeholderColor="#000000" value={raca} onChangeText={setRaca} maxLength={12}/>
+        <Input placeholder="Idade" placeholderColor="#000000" value={idade} onChangeText={setIdade} maxLength={2}/>
+        <Input placeholder="Porte" placeholderColor="#000000" value={porte} onChangeText={setPorte} maxLength={12}/>
+        <Input placeholder="Cor" placeholderColor="#000000" value={cor} onChangeText={setCor} maxLength={12}/>
 
 
         <TouchableOpacity

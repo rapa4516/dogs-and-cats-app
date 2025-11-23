@@ -1,5 +1,4 @@
 import { Image } from "react-native";
-import { Text } from '../Text';
 import { Container } from './styles';
 
 import icon from '../../assets/images/icon.png';

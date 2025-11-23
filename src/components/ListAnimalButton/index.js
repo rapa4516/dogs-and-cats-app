@@ -13,23 +13,19 @@ export default function ListAnimalButton ({visible, onClose}){
     
     return(
         <CustomModal visible={visible}>
-        <Header>
-            <Text>Listar Animais</Text>
+            <Header>
+                <Text weight="600">Animais para Adoção</Text>
 
-            <TouchableOpacity onPress={onClose} style={{ position: 'absolute', right: 0 }}>
-                <Image source={close} />
-            </TouchableOpacity>
+                <TouchableOpacity onPress={onClose} style={{ position: 'absolute', right: 0 }}>
+                    <Image source={close} />
+                </TouchableOpacity>
+                
+            </Header>
+            <Container>
+
+                    <ListarAnimais visible={visible}/>
             
-        </Header>
-        <Container>
-
-
-
-                <ListarAnimais visible={visible}/>
-
- 
-          
-        </Container>
+            </Container>
         </CustomModal>
     );
 }
