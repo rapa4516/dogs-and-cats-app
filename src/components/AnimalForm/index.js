@@ -46,7 +46,7 @@ export default function AnimalForm({ buttonLabel, onSave, animal }) {
         <Input placeholder="Raça" value={raca} onChangeText={setRaca} maxLength={12} />
         <Input placeholder="Idade" value={idade} onChangeText={setIdade} maxLength={2} />
         <Input placeholder="Porte" value={porte} onChangeText={setPorte} maxLength={12} />
-        <Input placeholder="Cor" value={cor} onChangeText={setCor} />
+        <Input placeholder="Cor" value={cor} onChangeText={setCor} maxLength={12} />
 
 
         <TouchableOpacity

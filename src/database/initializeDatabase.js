@@ -1,6 +1,5 @@
 export async function initializeDatabase(database) {
   await database.execAsync(`
-    DROP TABLE IF EXISTS animais;
     CREATE TABLE IF NOT EXISTS animais (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
 
