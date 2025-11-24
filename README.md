@@ -1,3 +1,3 @@
 # dogs-and-cats-app
 
-// QUE BIZARRO, EU ERREI A PORCARIA DE UM EXPORT E O APLICATIVO NAO ME AJUDA A ARRUMAR, QUE MRD.
+// 2:18 da manhã finalizando a penultima função do aplicativo, aparentemente amanhã eu finalizo todas as funções.
