@@ -35,7 +35,7 @@ export default function AnimalForm({ buttonLabel, onSave, animal }) {
   return (
     <Form>
       <ScrollView>
-        <Input placeholder="Nome" placeholderColor="#000000" value={nome} onChangeText={setNome} maxLength={12}/>
+        <Input placeholder="Nome" placeholderColor="#808080" value={nome} onChangeText={setNome} maxLength={12}/>
         <RNPickerSelect onValueChange={setEspecie} value={especie} placeholder={{ label: 'Selecione a espécie', value: null, color: '#999',}}
           items={[
               { label: 'Cachorro', value: 'Cachorro' },
@@ -48,10 +48,10 @@ export default function AnimalForm({ buttonLabel, onSave, animal }) {
           { label: 'Feminino', value: 'Feminino' },
           ]}
         />
-        <Input placeholder="Raça" placeholderColor="#000000" value={raca} onChangeText={setRaca} maxLength={12}/>
-        <Input placeholder="Idade" placeholderColor="#000000" value={idade} onChangeText={setIdade} maxLength={2}/>
-        <Input placeholder="Porte" placeholderColor="#000000" value={porte} onChangeText={setPorte} maxLength={12}/>
-        <Input placeholder="Cor" placeholderColor="#000000" value={cor} onChangeText={setCor} maxLength={12}/>
+        <Input placeholder="Raça" placeholderColor="#808080" value={raca} onChangeText={setRaca} maxLength={12}/>
+        <Input placeholder="Idade" placeholderColor="#808080" value={idade} onChangeText={setIdade} maxLength={2}/>
+        <Input placeholder="Porte" placeholderColor="#808080" value={porte} onChangeText={setPorte} maxLength={12}/>
+        <Input placeholder="Cor" placeholderColor="#808080" value={cor} onChangeText={setCor} maxLength={12}/>
 
 
         <TouchableOpacity
@@ -60,7 +60,7 @@ export default function AnimalForm({ buttonLabel, onSave, animal }) {
             marginTop: 10,
             marginBottom: 10,
             padding: 12,
-            backgroundColor: "#eee",
+            backgroundColor: '#696969',
             borderRadius: 8,
             alignItems: "center",
           }}

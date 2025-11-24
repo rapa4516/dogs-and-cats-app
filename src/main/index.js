@@ -6,13 +6,13 @@ import { Text } from "../components/Text";
 
 import addAnimal from '../assets/images/interface-pata/add-animal.png'
 import listAnimal from '../assets/images/interface-pata/list-animal.png'
-import addNota from '../assets/images/interface-pata/add-nota.png'
+import editAnimal from '../assets/images/interface-pata/edit-animal.png'
 import listAnimalAdot from '../assets/images/interface-pata/list-animal-adot.png'
 import sobreInst from '../assets/images/interface-pata/sobre-inst.png'
 
 import AddAnimalButtom from '../components/AddAnimalButton';
 import ListAnimalButton from "../components/ListAnimalButton";
-import AddNotaButton from "../components/AddNotaButton";
+import EditAnimalButton from "../components/EditAnimalButton";
 import SobreInstButton from "../components/SobreInstButton";
 import AnimaisAdotButton from "../components/AnimaisAdotButton";
 
@@ -23,7 +23,7 @@ import { useState } from "react";
 export default function Main(){
 const [isAddAnimalModalVisible, setAddAnimalModalVisible] = useState(false);
 const [isListModalVisible, setListModalVisible] = useState(false);
-const [isAddNotaModalVisible, setAddNotaModalVisible] = useState(false);
+const [isEditAnimalModalVisible, setEditAnimalModalVisible] = useState(false);
 const [isSobreInstModalVisible, setSobreIntsModalVisible] = useState(false);
 const [isAnimaisAdotModalVisible, setAnimaisAdotModalVisible] = useState(false);
 
@@ -35,8 +35,8 @@ function handleAddAnimalBtn (){
 function handleListAnimalBtn (){
     setListModalVisible(true);
 }
-function handleAddNotaBtn () {
-    setAddNotaModalVisible(true);
+function handleEditAnimalBtn () {
+    setEditAnimalModalVisible(true);
 }
 function handleSobreInstBtn () {
     setSobreIntsModalVisible(true);
@@ -86,14 +86,14 @@ return(
             </ContInterfaceTop>
             <ContInterfaceMid>
 
-                    {/* BOTAO DE ADICIONAR NOTA */}
-                    <TouchableOpacity onPress={handleAddNotaBtn}>
-                            <Image source={addNota} style={{ width: 110, 
+                    {/* BOTAO DE EDITAR ANIMAL */}
+                    <TouchableOpacity onPress={handleEditAnimalBtn}>
+                            <Image source={editAnimal} style={{ width: 110, 
                                 height: 110,  marginTop: 3, 
                                 marginBottom: 0,resizeMode: 'contain'}}/>
-                            <AddNotaButton
-                                visible={isAddNotaModalVisible}
-                                onClose={()=> setAddNotaModalVisible(false)}
+                            <EditAnimalButton
+                                visible={isEditAnimalModalVisible}
+                                onClose={()=> setEditAnimalModalVisible(false)}
                             />
                     </TouchableOpacity>
                     

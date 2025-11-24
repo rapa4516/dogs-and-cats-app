@@ -1,29 +1,30 @@
 import { Image, TouchableOpacity } from "react-native";
 import CustomModal from "../CustomModal";
 import { Text } from "../Text";
-import { Header } from "./styles";
-
-import AnimalForm from "../AnimalForm";
+import { Header, Container } from "./styles";
 
 import close from '../../assets/images/close.png';
 
-export default function AddAnimalButtom ({visible, onClose, onSave}){
-    return(
-        <CustomModal visible={visible} onClose={onClose} >
+import EditarAnimais from "../AnimalEdit/index"
 
+
+
+export default function EditAnimalButton ({visible, onClose}){
+    return(
+        <CustomModal visible={visible}>
             <Header>
-                <Text weight="600">Registrar Animal</Text>
+                <Text weight="600">Alterar Informações</Text>
 
                 <TouchableOpacity onPress={onClose} style={{ position: 'absolute', right: 0 }}>
                     <Image source={close} />
                 </TouchableOpacity>
+                
             </Header>
+            <Container>
 
-                <AnimalForm
-                    onSave={onSave}
-                />
+                    <EditarAnimais visible={visible}/>
             
-            
+            </Container>
         </CustomModal>
     );
 }

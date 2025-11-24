@@ -87,8 +87,8 @@ export function useAnimalDatabase() {
   // REMOVER
   async function remove(id) {
     try {
-      const query = `DELETE FROM animais WHERE id = ${id}`;
-      await database.execAsync(query);
+      const query = "DELETE FROM animais WHERE id = ?";
+      await database.runAsync(query, [id]);
     } catch (error) {
       console.log("Erro REMOVE:", error);
     }

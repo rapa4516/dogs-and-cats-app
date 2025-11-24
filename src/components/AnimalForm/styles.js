@@ -7,9 +7,9 @@ export const Form = styled.View`
 `;
 
 export const Input = styled.TextInput.attrs(props => ({
-  placeholderTextColor: props.placeholderColor || '#000000',
+  placeholderTextColor: props.placeholderColor || '#808080',
 }))`
-  color: #fff;
+  color: #0000000;
   background: rgba(0, 0, 0, 0.1);
   border-width: 1px;
   border-color: #fff;
