@@ -59,7 +59,8 @@ export function useAnimalDatabase() {
           idade = $idade,
           porte = $porte,
           cor = $cor,
-          foto = $foto
+          foto = $foto,
+          adotado = $adotado
         WHERE id = $id
       `;
 
@@ -67,14 +68,15 @@ export function useAnimalDatabase() {
 
       await statement.executeAsync({
         $id: animal.id,
-        $nome: animal.nome,
-        $especie: animal.especie,
-        $raca: animal.raca,
-        $sexo: animal.sexo,
-        $idade: animal.idade,
-        $porte: animal.porte,
-        $cor: animal.cor,
-        $foto: animal.foto
+        $nome: animal.nome ?? "",
+        $especie: animal.especie ?? "",
+        $raca: animal.raca ?? "",
+        $sexo: animal.sexo ?? "",
+        $idade: animal.idade ?? "",
+        $porte: animal.porte ?? "",
+        $cor: animal.cor ?? "",
+        $foto: animal.foto ?? null,
+        $adotado: animal.adotado ?? 0
       });
 
     } catch (error) {

@@ -17,7 +17,7 @@ export default function AnimalForm({ buttonLabel, onSave, animal }) {
   const [porte, setPorte] = useState(animal?.porte ?? '');
   const [cor, setCor] = useState(animal?.cor ?? '');
   const [foto, setFoto] = useState(animal?.foto ?? '');
-
+  const [adotado, setAdotado] = useState(animal?.adotado ?? 0);
   async function pickImage() {
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.Images,
@@ -52,7 +52,17 @@ export default function AnimalForm({ buttonLabel, onSave, animal }) {
         <Input placeholder="Idade" placeholderColor="#808080" value={idade} onChangeText={setIdade} maxLength={2}/>
         <Input placeholder="Porte" placeholderColor="#808080" value={porte} onChangeText={setPorte} maxLength={12}/>
         <Input placeholder="Cor" placeholderColor="#808080" value={cor} onChangeText={setCor} maxLength={12}/>
-
+        {animal?.id && (
+          <RNPickerSelect
+            onValueChange={(value) => setAdotado(value)}
+            value={adotado}
+            placeholder={{ label: "Animal foi adotado?", value: null }}
+            items={[
+              { label: 'Não', value: 0 },
+              { label: 'Sim', value: 1 }
+            ]}
+          />
+        )}
 
         <TouchableOpacity
           onPress={pickImage}
@@ -95,6 +105,7 @@ export default function AnimalForm({ buttonLabel, onSave, animal }) {
             porte,
             cor,
             foto,
+            adotado,
           })
         }
         disabled={
@@ -103,7 +114,7 @@ export default function AnimalForm({ buttonLabel, onSave, animal }) {
           sexo.length === 0
         }
       >
-        Cadastrar {buttonLabel}
+        Salvar {buttonLabel}
       </Button>
     </Form>
   );

@@ -7,11 +7,15 @@ import { Container, ContainerTop, ContainerBot, SemFotoCont, InfoCont } from "./
 import edit from '../../assets/images/edit.png';
 import remover from '../../assets/images/delete.png';
 
+import AnimalEditor from '.././AnimalEditor/index'
+
 import { useAnimalDatabase } from '../../database/useAnimalDatabase';
 
-export default function Animals({ visible, animal, onEditAnimal }) {
+export default function Animals({ visible, animal}) {
+  const [isAnimalEditorModalVisible, setAnimalEditorModalVisible] = useState(false);
+  const [AnimalBeingEdited, setAnimalBeingEdited] = useState();
   const [animals, setAnimals] = useState([]);
-  const { show, remove} = useAnimalDatabase();
+  const { show, remove, update} = useAnimalDatabase();
 
   async function handleDelete(id) {
     await remove(id); 
@@ -29,24 +33,40 @@ export default function Animals({ visible, animal, onEditAnimal }) {
     }
   }, [visible]);
 
+  function handleEditAnimal(animal) {
+    setAnimalBeingEdited(animal);
+    setAnimalEditorModalVisible(true);
+  }
+
+  async function handleSaveEdit(animal){
+    await update(animal);
+    await loadAnimals();  
+    setAnimalEditorModalVisible(false); 
+  }
 
   return (
     <FlatList
       data={animals}
-      keyExtractor={(item) => item.id.toString()}
+      keyExtractor={(animal) => animal.id.toString()}
       renderItem={({ item: animal }) => (
         <Container>
           <ContainerTop>
               <Text weight="600">{animal.nome}</Text>
 
             <View style={{flexDirection: 'row', padding: 2}}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => handleEditAnimal(animal)}>
                 <Image source={edit} style={{
                   width: 14,
                   height: 14,
                   resizeMode: 'contain'
                 }}/>
               </TouchableOpacity>
+              <AnimalEditor 
+                visible={isAnimalEditorModalVisible}
+                onCloser={()=> setAnimalEditorModalVisible(false)}
+                onSave={handleSaveEdit}
+                animal={AnimalBeingEdited}
+              />
             </View>
           
               <View style={{position: 'absolute', right: 0, flexDirection: 'row', padding: 7}}>
