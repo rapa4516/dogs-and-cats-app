@@ -1,9 +1,10 @@
 import { useFonts } from 'expo-font';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import Main from './src/main';
 
 import { SQLiteProvider } from 'expo-sqlite';
-import {initializeDatabase} from './src/database/initializeDatabase';
+import { initializeDatabase } from './src/database/initializeDatabase';
 
 export default function App() {
   const [isFontsLoaded] = useFonts({
@@ -17,8 +18,10 @@ export default function App() {
   }
 
   return (
-    <SQLiteProvider databaseName='meuqueridopet.app' onInit={initializeDatabase}>
-      <Main />
-    </SQLiteProvider>
+    <SafeAreaProvider>
+      <SQLiteProvider databaseName="meuqueridopet.app" onInit={initializeDatabase}>
+        <Main />
+      </SQLiteProvider>
+    </SafeAreaProvider>
   );
 }

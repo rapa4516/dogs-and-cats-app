@@ -1,25 +1,9 @@
-import { Modal } from "react-native";
+import { Modal, Platform, StatusBar } from "react-native";
 import { ModalBody, Overlay } from "./styles";
-import { SafeAreaProvider, useSafeAreaInsets } from "react-native-safe-area-context";
-
-function SafeAreaWrapper({ children }) {
-  const insets = useSafeAreaInsets();
-
-  return (
-    <Overlay
-      style={{
-        paddingTop: insets.top,
-        paddingBottom: insets.bottom,
-      }}
-    >
-      <ModalBody>
-        {children}
-      </ModalBody>
-    </Overlay>
-  );
-}
 
 export default function CustomModal({ children, visible, onClose }) {
+  const paddingTop = Platform.OS === "android" ? StatusBar.currentHeight || 0 : 0;
+
   return (
     <Modal
       visible={visible}
@@ -28,11 +12,16 @@ export default function CustomModal({ children, visible, onClose }) {
       animationType="fade"
       onRequestClose={onClose}
     >
-      <SafeAreaProvider>
-        <SafeAreaWrapper>
+      <Overlay
+        style={{
+          paddingTop,
+          paddingBottom: 0,
+        }}
+      >
+        <ModalBody>
           {children}
-        </SafeAreaWrapper>
-      </SafeAreaProvider>
+        </ModalBody>
+      </Overlay>
     </Modal>
   );
 }

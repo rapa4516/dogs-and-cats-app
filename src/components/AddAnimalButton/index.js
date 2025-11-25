@@ -12,17 +12,16 @@ export default function AddAnimalButtom ({visible, onClose, onSave}){
         <CustomModal visible={visible} onClose={onClose} >
 
             <Header>
-                <Text weight="600">Registrar Animal</Text>
+                <Text weight="600" style={{ fontSize: 21}}>Registrar Animal</Text>
 
                 <TouchableOpacity onPress={onClose} style={{ position: 'absolute', right: 0 }}>
                     <Image source={close} />
                 </TouchableOpacity>
             </Header>
-
+            
                 <AnimalForm
                     onSave={onSave}
                 />
-            
             
         </CustomModal>
     );

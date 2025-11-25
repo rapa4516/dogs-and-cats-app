@@ -14,7 +14,7 @@ export default function ListAnimalButton ({visible, onClose}){
     return(
         <CustomModal visible={visible}>
             <Header>
-                <Text weight="600">Animais para Adoção</Text>
+                <Text weight="600" style={{ fontSize: 21}}>Animais para Adoção</Text>
 
                 <TouchableOpacity onPress={onClose} style={{ position: 'absolute', right: 0 }}>
                     <Image source={close} />

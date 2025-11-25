@@ -12,17 +12,16 @@ export default function AnimalEditor({ visible, onCloser, onSave, animal }) {
         <CustomModal visible={visible} onCloser={onCloser}>
 
             <Header>
-                <Text weight="600">Editar Informações</Text>
+                <Text weight="600" style={{ fontSize: 22}}>Editar Informações</Text>
 
                 <TouchableOpacity onPress={onCloser} style={{ position: 'absolute', right: 0 }}>
                     <Image source={close} />
                 </TouchableOpacity>
             </Header>
-
+            
             <AnimalForm
                 onSave={onSave}
                 animal={animal}
-                buttonLabel="Animal"
             />
 
         </CustomModal>

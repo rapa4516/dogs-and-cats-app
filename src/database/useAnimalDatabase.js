@@ -3,7 +3,6 @@ import { useSQLiteContext } from "expo-sqlite";
 export function useAnimalDatabase() {
   const database = useSQLiteContext();
 
-  // LISTAR
   async function show() {
     try {
       const query = "SELECT * FROM animais ORDER BY id DESC";
@@ -14,7 +13,6 @@ export function useAnimalDatabase() {
     }
   }
 
-  // CRIAR
   async function create(animal) {
     let statement;
 
@@ -45,7 +43,6 @@ export function useAnimalDatabase() {
     }
   }
 
-  // ATUALIZAR
   async function update(animal) {
     let statement;
 
@@ -86,7 +83,6 @@ export function useAnimalDatabase() {
     }
   }
 
-  // REMOVER
   async function remove(id) {
     try {
       const query = "DELETE FROM animais WHERE id = ?";

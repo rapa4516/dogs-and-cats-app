@@ -11,7 +11,7 @@ export const Overlay = styled.View`
 export const ModalBody = styled.View`
   background-color: #fff;
   width: 107%;
-  max-height: 59%;
+  height: 59%;
   padding: 24px;
   border-radius: 8px;
 `;

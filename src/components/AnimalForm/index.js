@@ -18,6 +18,7 @@ export default function AnimalForm({ buttonLabel, onSave, animal }) {
   const [cor, setCor] = useState(animal?.cor ?? '');
   const [foto, setFoto] = useState(animal?.foto ?? '');
   const [adotado, setAdotado] = useState(animal?.adotado ?? 0);
+
   async function pickImage() {
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.Images,
@@ -27,34 +28,79 @@ export default function AnimalForm({ buttonLabel, onSave, animal }) {
     });
 
     if (!result.canceled) {
-
       setFoto(result.assets[0].uri);
     }
   }
 
   return (
     <Form>
-      <ScrollView>
-        <Input placeholder="Nome" placeholderColor="#808080" value={nome} onChangeText={setNome} maxLength={12}/>
-        <RNPickerSelect onValueChange={setEspecie} value={especie} placeholder={{ label: 'Selecione a espécie', value: null, color: '#999',}}
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        style={{ marginBottom: 12 }}
+      >
+        <Input
+          placeholder="Nome"
+          placeholderTextColor="#808080"
+          value={nome}
+          onChangeText={setNome}
+          maxLength={12}
+        />
+
+        <RNPickerSelect
+          onValueChange={setEspecie}
+          value={especie}
+          placeholder={{ label: 'Selecione a espécie', value: null }}
           items={[
-              { label: 'Cachorro', value: 'Cachorro' },
-              { label: 'Gato', value: 'Gato' }
+            { label: 'Cachorro', value: 'Cachorro' },
+            { label: 'Gato', value: 'Gato' }
           ]}
         />
-        <RNPickerSelect onValueChange={(value) => setSexo(value)} value={sexo} placeholder={{ label: "Selecione o sexo", value: null }}
-        items={[
-          { label: 'Masculino', value: 'Masculino' },
-          { label: 'Feminino', value: 'Feminino' },
+
+        <RNPickerSelect
+          onValueChange={setSexo}
+          value={sexo}
+          placeholder={{ label: "Selecione o sexo", value: null }}
+          items={[
+            { label: 'Masculino', value: 'Masculino' },
+            { label: 'Feminino', value: 'Feminino' },
           ]}
         />
-        <Input placeholder="Raça" placeholderColor="#808080" value={raca} onChangeText={setRaca} maxLength={12}/>
-        <Input placeholder="Idade" placeholderColor="#808080" value={idade} onChangeText={setIdade} maxLength={2}/>
-        <Input placeholder="Porte" placeholderColor="#808080" value={porte} onChangeText={setPorte} maxLength={12}/>
-        <Input placeholder="Cor" placeholderColor="#808080" value={cor} onChangeText={setCor} maxLength={12}/>
+
+        <Input
+          placeholder="Raça"
+          placeholderTextColor="#808080"
+          value={raca}
+          onChangeText={setRaca}
+          maxLength={12}
+        />
+
+        <Input
+          placeholder="Idade"
+          placeholderTextColor="#808080"
+          value={idade}
+          onChangeText={setIdade}
+          maxLength={2}
+        />
+
+        <Input
+          placeholder="Porte"
+          placeholderTextColor="#808080"
+          value={porte}
+          onChangeText={setPorte}
+          maxLength={12}
+        />
+
+        <Input
+          placeholder="Cor"
+          placeholderTextColor="#808080"
+          value={cor}
+          onChangeText={setCor}
+          maxLength={12}
+        />
+
         {animal?.id && (
           <RNPickerSelect
-            onValueChange={(value) => setAdotado(value)}
+            onValueChange={setAdotado}
             value={adotado}
             placeholder={{ label: "Animal foi adotado?", value: null }}
             items={[
@@ -90,9 +136,8 @@ export default function AnimalForm({ buttonLabel, onSave, animal }) {
             }}
           />
         )}
-
       </ScrollView>
-      
+
       <Button
         onPress={() =>
           onSave({
@@ -111,7 +156,11 @@ export default function AnimalForm({ buttonLabel, onSave, animal }) {
         disabled={
           nome.length === 0 ||
           especie.length === 0 ||
-          sexo.length === 0
+          sexo.length === 0 ||
+          raca.length === 0 ||
+          idade.length === 0 ||
+          porte.length === 0 ||
+          cor.length === 0
         }
       >
         Salvar {buttonLabel}

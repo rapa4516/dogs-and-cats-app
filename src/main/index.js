@@ -120,7 +120,7 @@ return(
                     </TouchableOpacity>
             </ContInterfaceMid>
             <ContainerRDP>
-                    {/* RODAPÉ */}
+
                             <Text>Estácio | Developed by </Text>
             </ContainerRDP>
 

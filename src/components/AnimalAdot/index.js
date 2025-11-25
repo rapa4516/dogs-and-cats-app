@@ -2,7 +2,7 @@ import { Image, FlatList } from 'react-native';
 import { Text } from '../Text';
 import { useEffect, useState } from 'react';
 
-import { Container, ContainerTop, ContainerBot, SemFotoCont, InfoCont } from "./styles";
+import { Container, ContainerBot, SemFotoCont, InfoCont } from "../AnimalList/styles";
 
 import { useAnimalDatabase } from '../../database/useAnimalDatabase';
 
@@ -30,14 +30,10 @@ export default function Animals({ visible }) {
   return (
     <FlatList
       showsVerticalScrollIndicator={false}
-      data={animals.filter(a => a.adotado === false)}
+      data={animals.filter(a => a.adotado === true)}
       keyExtractor={(item) => item.id.toString()}
       renderItem={({ item: animal }) => (
         <Container>
-          <ContainerTop>
-            <Text weight="600">{animal.nome}</Text>
-          </ContainerTop>
-
           <ContainerBot>
             {animal.foto ? (
               <Image
@@ -56,11 +52,7 @@ export default function Animals({ visible }) {
             )}
 
             <InfoCont>
-              <Text>Espécie: {animal.especie}</Text>
-              <Text>Sexo: {animal.sexo}</Text>
-              <Text>Idade: {animal.idade}</Text>
-              <Text>Porte: {animal.porte}</Text>
-              <Text>Cor: {animal.cor}</Text>
+              <Text weight="600">{animal.nome}</Text>
             </InfoCont>
           </ContainerBot>
         </Container>

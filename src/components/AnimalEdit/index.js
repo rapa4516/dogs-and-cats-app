@@ -46,6 +46,7 @@ export default function Animals({ visible, animal}) {
 
   return (
     <FlatList
+      showsVerticalScrollIndicator={false}
       data={animals}
       keyExtractor={(animal) => animal.id.toString()}
       renderItem={({ item: animal }) => (
@@ -101,6 +102,7 @@ export default function Animals({ visible, animal}) {
               <Text>Espécie: {animal.especie}</Text>
               <Text>Sexo: {animal.sexo}</Text>
               <Text>Raça: {animal.raca}</Text>
+              <Text>Idade: {animal.idade}</Text>
               <Text>Porte: {animal.porte}</Text>
               <Text>Cor: {animal.cor}</Text>
               <Text>Situação: {animal.adotado === 1 ? "Adotado" : "Não adotado"} </Text>
