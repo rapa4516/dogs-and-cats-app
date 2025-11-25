@@ -6,6 +6,7 @@ import { Container, ContainerTop, ContainerBot, SemFotoCont, InfoCont } from "./
 
 import edit from '../../assets/images/edit.png';
 import remover from '../../assets/images/delete.png';
+import Ops from '../../assets/images/semRegistro.png'
 
 import AnimalEditor from '.././AnimalEditor/index'
 
@@ -49,6 +50,27 @@ export default function Animals({ visible, animal}) {
       showsVerticalScrollIndicator={false}
       data={animals}
       keyExtractor={(animal) => animal.id.toString()}
+
+      ListEmptyComponent={() => (
+        <View
+          style={{
+            alignItems: 'center',
+            marginTop: 40,
+            paddingHorizontal: 20
+          }}
+        >
+          <Image
+            source={Ops}
+            style={{ width: 150, height: 150, marginBottom: 10 }}
+            resizeMode="contain"
+          />
+
+          <Text opacity={0.7} style={{ textAlign: 'center' }}>
+            Parece que ainda não tem nenhum registro.
+          </Text>
+        </View>
+      )}
+
       renderItem={({ item: animal }) => (
         <Container>
           <ContainerTop>

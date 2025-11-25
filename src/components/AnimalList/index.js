@@ -1,6 +1,8 @@
-import { Image, FlatList } from 'react-native';
+import { Image, FlatList, View } from 'react-native';
 import { Text } from '../Text';
 import { useEffect, useState } from 'react';
+
+import Ops from '../../assets/images/semRegistro.png'
 
 import { Container, ContainerTop, ContainerBot, SemFotoCont, InfoCont } from "./styles";
 
@@ -27,11 +29,34 @@ export default function Animals({ visible }) {
     }
   }, [visible]);
 
+  const filtered = animals.filter(a => a.adotado === false);
+
   return (
     <FlatList
       showsVerticalScrollIndicator={false}
-      data={animals.filter(a => a.adotado === false)}
+      data={filtered}
       keyExtractor={(item) => item.id.toString()}
+
+      ListEmptyComponent={() => (
+        <View
+          style={{
+            alignItems: 'center',
+            marginTop: 40,
+            paddingHorizontal: 20
+          }}
+        >
+          <Image
+            source={Ops}
+            style={{ width: 150, height: 150, marginBottom: 10 }}
+            resizeMode="contain"
+          />
+
+          <Text opacity={0.7} style={{ textAlign: 'center' }}>
+            Parece que ainda não tem nenhum registro.
+          </Text>
+        </View>
+      )}
+
       renderItem={({ item: animal }) => (
         <Container>
           <ContainerTop>
