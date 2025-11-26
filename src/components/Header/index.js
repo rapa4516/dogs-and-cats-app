@@ -11,7 +11,7 @@ export default function Header(){
             height: 110,
             alignSelf: 'center', 
             marginTop: 3,       
-            marginBottom: 15,   
+            marginBottom: 80,   
             }} />
         </Container>
     );

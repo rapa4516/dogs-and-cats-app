@@ -17,17 +17,21 @@ export const ContInterfaceTop = styled.View`
 `
 export const ContInterfaceMid = styled.View`
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  gap: 0px;
+  justify-content: center;
+  align-items: flex-start;
 `
 export const ContainerRDP = styled.View`
   width: 100%;
   padding: 12px 20px;
 
-  background-color: #696969;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
+  background-color: #fff;
 
   flex-direction: row;
-  justify-content: flex-end
+  justify-content: flex-end;
+
+  position: absolute;
+  bottom: 47px;
+  left: 0px;
+  right: 0px;
 `

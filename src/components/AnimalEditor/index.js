@@ -4,6 +4,7 @@ import { Text } from "../Text";
 import { Header } from "./styles";
 
 import AnimalForm from "../AnimalForm";
+import logo from '../../assets/images/edit-animal.png';
 
 import close from '../../assets/images/close.png';
 
@@ -12,7 +13,14 @@ export default function AnimalEditor({ visible, onCloser, onSave, animal }) {
         <CustomModal visible={visible} onCloser={onCloser}>
 
             <Header>
-                <Text weight="600" style={{ fontSize: 22}}>Editar Informações</Text>
+                <Image source={logo} style={{
+                        resizeMode: 'contain',
+                        width: 55,
+                        height: 65,
+                        position: 'absolute',
+                        left: 1,
+                }}/>
+                <Text weight="600" style={{ fontSize: 22}}>Editar</Text>
 
                 <TouchableOpacity onPress={onCloser} style={{ position: 'absolute', right: 0 }}>
                     <Image source={close} />
