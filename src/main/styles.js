@@ -25,7 +25,7 @@ export const ContainerRDP = styled.View`
   width: 100%;
   padding: 12px 20px;
 
-  background-color: #fff;
+  background-color: #000000;
 
   flex-direction: row;
   justify-content: flex-end;

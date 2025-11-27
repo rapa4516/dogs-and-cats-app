@@ -132,7 +132,7 @@ export default function Main() {
                 </ContInterfaceMid>
 
                 <ContainerRDP>
-                    <Text>Estácio | Developed by</Text>
+                    <Text style={{color:'#fff'}}>Estácio | Developed by</Text>
                 </ContainerRDP>
 
             </Container>
